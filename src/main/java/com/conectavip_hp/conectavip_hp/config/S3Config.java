@@ -1,5 +1,6 @@
-package com.conectavip_hp.conectavip_hp.domain.services;
+package com.conectavip_hp.conectavip_hp.config;
 
+import com.conectavip_hp.conectavip_hp.ports.out.FileStoragePort;
 import io.github.cdimascio.dotenv.Dotenv;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
@@ -9,11 +10,11 @@ import software.amazon.awssdk.core.sync.RequestBody;
 import java.io.File;
 import java.nio.file.Paths;
 
-public class S3Service {
+public class S3Config implements FileStoragePort {
     private final S3Client s3Client;
     private final String bucketName;
 
-    public S3Service() {
+    public S3Config() {
         // Carrega o arquivo .env
         Dotenv dotenv = Dotenv.load();
 
